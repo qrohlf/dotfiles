@@ -1,7 +1,11 @@
 #!/bin/bash
 # fancy git/heroku deploy script
 # dependencies: hub, heroku toolbelt, OSX 10.9+
-
+#
+# makes the following totally reasonable assumptions:
+# - you're deploying from master
+# - your heroku remote is named 'heroku'
+#
 # flags: 
 # -q quiet mode: disable notifications
 # -d deploy: push to heroku
@@ -21,7 +25,7 @@ booyah() {
         esac
     done
 
-    if git push 
+    if git push origin master
     then
         if [ "$VERBOSE" = true ]; then notify "$TITLE" 'git push successful'; fi
         if [ "$BROWSE" = true ]; then hub browse; fi
@@ -34,7 +38,7 @@ booyah() {
         if git push heroku master
         then
             if [ "$VERBOSE" = true ]; then notify "$TITLE" 'Heroku deploy successful'; fi
-            if [ "$BROWSE" = true ]; then hub browse; fi
+            if [ "$BROWSE" = true ]; then heroku open; fi
         else
             if [ "$VERBOSE" = true ]; then notify "$TITLE" 'Heroku deploy unsuccessful'; fi
             return 1
