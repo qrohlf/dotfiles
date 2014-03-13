@@ -1,5 +1,11 @@
 #!/bin/bash
+# fancy git/heroku deploy script
+# dependencies: hub, heroku toolbelt, OSX 10.9+
 
+# flags: 
+# -q quiet mode: disable notifications
+# -d deploy: push to heroku
+# -b browse: open on github/heroku
 booyah() {
     TITLE=${PWD##*/}
     VERBOSE=true    # enable notifications by default
@@ -39,3 +45,5 @@ booyah() {
 notify() {
      osascript -e "display notification \"$2\" with title \"$1\""
 }
+
+alias fuckitshipit='booyah -db' # sometimes a little extra enthusiasm is needed
