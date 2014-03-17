@@ -1,4 +1,4 @@
-# @qrohlf does dotfiles
+# [@qrohlf](https://github.com/qrohlf) does [dotfiles](http://dotfiles.github.io)
 
 ## Installation:
 To install the whole shebang:
