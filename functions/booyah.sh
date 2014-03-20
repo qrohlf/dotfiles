@@ -25,7 +25,7 @@ booyah() {
         esac
     done
 
-    if git push origin master
+    if git push
     then
         if [ "$VERBOSE" = true ]; then notify "$TITLE" 'git push successful'; fi
         if [ "$BROWSE" = true ]; then hub browse; fi
