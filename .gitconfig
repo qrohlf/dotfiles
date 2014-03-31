@@ -1,0 +1,13 @@
+[user]
+	name = Quinn Rohlf
+	email = qr@qrohlf.com
+[color]
+	ui = true
+[push]
+	default = tracking
+[core]
+	editor = subl -nw
+	excludesfile = ~/.gitignore_global
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
