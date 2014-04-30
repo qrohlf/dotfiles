@@ -33,6 +33,7 @@ booyah() {
     done
 
     if [ "$UPLOAD" = true ]; then
+        echo_highlight "pushing current branch"
         if git push; then
             if [ "$VERBOSE" = true ]; then notify "$TITLE" 'git push successful'; fi
         else
@@ -46,21 +47,22 @@ booyah() {
 
         # run the custom deploy script if it exists
         if [ -a .shipit ]; then
+            echo_highlight "running custom deploy script"
             if bash .shipit; then
                 DEPLOY_SUCCESS=true
             fi
         # otherwise assume heroku
         elif heroku info &> /dev/null; then
+            echo_highlight "deploying to heroku"
             if git push heroku master; then
                 DEPLOY_SUCCESS=true
             fi
         else
             NODEPLOY=true
+            echo "deploy not attempted: could not find a deploy target"
         fi
 
-        if [ "$NODEPLOY" = true ]; then
-            echo "deploy not attempted: could not find a deploy target"
-        elif [ "$DEPLOY_SUCCESS" = true ] && [ "$VERBOSE" = true ]; then
+        if ! [ -z NODEPLOY ] && [ "$DEPLOY_SUCCESS" = true ] && [ "$VERBOSE" = true ]; then
             notify "$TITLE" 'Deploy successful'
         else
             notify "$TITLE" 'Deploy failed'
@@ -76,6 +78,10 @@ booyah() {
             hub browse
         fi
     fi
+}
+
+echo_highlight() {
+    printf "\e[0;36;49m$1\e[0m\n"
 }
 
 notify() {
