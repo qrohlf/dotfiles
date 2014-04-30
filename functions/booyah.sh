@@ -6,6 +6,11 @@
 # - you're deploying from master
 # - your heroku remote is named 'heroku'
 #
+# Customization:
+# - custom deployment scripts can be added to your project root as '.shipit'
+# - custom urls to open when the browse flag is specified can be added to 
+#   your project root as '.shipit-browse'
+#
 # flags: 
 # -q quiet mode: disable notifications
 # -d deploy: push to heroku
