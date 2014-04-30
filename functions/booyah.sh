@@ -45,18 +45,20 @@ booyah() {
                 DEPLOY_SUCCESS=true
             fi
         # otherwise assume heroku
-        else 
+        elif heroku info &> /dev/null; then
             if git push heroku master; then
                 DEPLOY_SUCCESS=true
             fi
+        else
+            NODEPLOY=true
         fi
 
-
-        if [ "$DEPLOY_SUCCESS" = true ] && [ "$VERBOSE" = true ]; then
+        if [ "$NODEPLOY" = true ]; then
+            echo "deploy not attempted: could not find a deploy target"
+        elif [ "$DEPLOY_SUCCESS" = true ] && [ "$VERBOSE" = true ]; then
             notify "$TITLE" 'Deploy successful'
         else
-            notify "$TITLE" 'Deploy unsuccessful'
-            return 1
+            notify "$TITLE" 'Deploy failed'
         fi
     fi
 
