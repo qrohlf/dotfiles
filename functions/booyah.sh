@@ -62,10 +62,12 @@ booyah() {
             echo "deploy not attempted: could not find a deploy target"
         fi
 
-        if ! [ -z NODEPLOY ] && [ "$DEPLOY_SUCCESS" = true ] && [ "$VERBOSE" = true ]; then
-            notify "$TITLE" 'Deploy successful'
-        else
-            notify "$TITLE" 'Deploy failed'
+        if [ -z "$NODEPLOY" ] && [ "$VERBOSE" = true ]; then
+            if [ "$DEPLOY_SUCCESS" = true ]; then
+                notify "$TITLE" 'Deploy successful'
+            else
+                notify "$TITLE" 'Deploy failed'
+            fi
         fi
     fi
 
