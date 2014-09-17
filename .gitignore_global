@@ -3,3 +3,4 @@
 config.codekit
 .shipit
 .shipit-browse
+.ruby-version

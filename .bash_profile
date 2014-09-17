@@ -13,7 +13,7 @@ fi;
 . ~/.dotfiles/init.sh
 
 # ENV variables
-export EDITOR="atom"
+export EDITOR="vim"
 
 # Homebrew Bash Completion
 # This doubles the time it takes to login to a shell
