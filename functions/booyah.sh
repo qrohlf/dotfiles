@@ -8,10 +8,10 @@
 #
 # Customization:
 # - custom deployment scripts can be added to your project root as '.shipit'
-# - custom urls to open when the browse flag is specified can be added to 
+# - custom urls to open when the browse flag is specified can be added to
 #   your project root as '.shipit-browse'
 #
-# flags: 
+# flags:
 # -q quiet mode: disable notifications
 # -d deploy: push to heroku
 # -b browse: open on github/heroku
@@ -20,11 +20,11 @@ booyah() {
     VERBOSE=true    # enable notifications by default
     UPLOAD=true     # enable push to origin by default
     BROWSE=false    # disable browse by default
-    DEPLOY=false    # disable deploy by default
+    DEPLOY=true     # enable deploy by default
     local OPTIND    # http://stackoverflow.com/questions/16654607/using-getopts-inside-a-bash-function
     while getopts "qdbx" flag
     do
-        case $flag in 
+        case $flag in
             q) VERBOSE=false;;
             d) DEPLOY=true;;
             b) BROWSE=true;;
@@ -72,8 +72,8 @@ booyah() {
     fi
 
     if [ "$BROWSE" = true ]; then
-        if [ -a .shipit-browse ]; then 
-            open `cat .shipit-browse`; 
+        if [ -a .shipit-browse ]; then
+            open `cat .shipit-browse`;
         elif heroku info &> /dev/null; then
             heroku open
         elif hub browse -u; then
