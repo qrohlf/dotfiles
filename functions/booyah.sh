@@ -26,7 +26,7 @@ booyah() {
     do
         case $flag in
             q) VERBOSE=false;;
-            d) DEPLOY=true;;
+            d) DEPLOY=false;;
             b) BROWSE=true;;
             x) UPLOAD=false;;
         esac
@@ -90,4 +90,4 @@ notify() {
      osascript -e "display notification \"$2\" with title \"$1\""
 }
 
-alias fuckitshipit='booyah -db' # sometimes a little extra enthusiasm is needed
+alias fuckitshipit='booyah -b' # sometimes a little extra enthusiasm is needed
