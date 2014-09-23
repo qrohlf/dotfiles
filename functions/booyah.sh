@@ -90,8 +90,7 @@ notify() {
      osascript -e "display notification \"$2\" with title \"$1\""
 }
 
-fuckitshipit() {
-  booyah
+:shipit:() {
   cat<<"EOF"
 
  ,;;:;,          Ship it.
@@ -104,5 +103,9 @@ fuckitshipit() {
         ``'"`
 
 EOF
-  booyah -xdb
+}
+
+fuckitshipit() {
+  booyah
+  :shipit:
 }
