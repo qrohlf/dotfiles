@@ -90,4 +90,17 @@ notify() {
      osascript -e "display notification \"$2\" with title \"$1\""
 }
 
-alias fuckitshipit='booyah -b' # sometimes a little extra enthusiasm is needed
+fuckitshipit() {
+  booyah
+  cat<<"EOF"
+ ,;;:;,
+ ;;;;;
+,:;;:;    ,'=.
+;:;:;' .=" ,'_\
+':;:;,/  ,__:=@
+ ';;:;  =./)_
+   `"=\_  )_"`
+        ``'"`
+EOF
+  booyah -xdb
+}
