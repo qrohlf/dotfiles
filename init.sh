@@ -8,7 +8,7 @@ for i in ~/.dotfiles/functions/*.sh ; do
 done
 
 # Handy aliases
-alias disapprove=~/.disapprove.sh # uselessness (github.com/qrohlf/look-of-disapproval)
+# alias disapprove=~/.disapprove.sh # uselessness (github.com/qrohlf/look-of-disapproval)
 alias gh="hub browse" # open github for the current repo
 alias wub="booyah -xdb" # wub == web
 alias ls="ls -G" # colored ls output
