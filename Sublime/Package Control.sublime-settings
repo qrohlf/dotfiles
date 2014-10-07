@@ -1,0 +1,19 @@
+{
+	"installed_packages":
+	[
+		"Base16 Color Schemes",
+		"Better CoffeeScript",
+		"JavaScriptNext - ES6 Syntax",
+		"LESS",
+		"Markdown Extended",
+		"Markdown Preview",
+		"Prolog",
+		"Puppet",
+		"Sass",
+		"SublimeLinter",
+		"SublimeLinter-coffee",
+		"SublimeLinter-jshint",
+		"Theme - Spacegray",
+		"WordCount"
+	]
+}

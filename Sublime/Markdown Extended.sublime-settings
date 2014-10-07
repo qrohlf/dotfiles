@@ -1,0 +1,8 @@
+{
+	"extensions":
+	[
+		"md"
+	],
+  "wrap_width": 100,
+  "word_wrap": true,
+}

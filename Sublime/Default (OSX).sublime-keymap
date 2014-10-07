@@ -1,0 +1,6 @@
+[
+    { "keys": ["command+m"], "command": "markdown_preview", "args": {"target": "browser", "parser":"github"}},
+    { "keys": ["command+shift+m"], "command": "markdown_preview", "args": {"target": "browser", "parser":"default"}},
+    { "keys": ["super+f"], "command": "show_panel", "args": {"panel": "replace", "reverse": false} },
+    { "keys": ["super+\\"], "command": "toggle_side_bar" }
+]
