@@ -1,8 +1,11 @@
 {
+  "color_scheme": "Packages/Base16 Color Schemes/base16-tomorrow.light.tmTheme",
 	"extensions":
 	[
 		"md"
 	],
-  "wrap_width": 100,
+  "wrap_width": 60,
   "word_wrap": true,
+  "font_face": "Open Sans",
+  "font_size": 13
 }

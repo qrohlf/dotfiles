@@ -6,10 +6,6 @@
 	"drag_text": false,
 	"enable_tab_scrolling": false,
 	"font_face": "Source Code Pro",
-	"font_options":
-	[
-		"no_round"
-	],
 	"font_size": 11,
 	"hot_exit": false,
 	"ignored_packages":
