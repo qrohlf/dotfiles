@@ -6,8 +6,10 @@
 [push]
 	default = tracking
 [core]
-	editor = atom --wait
+	editor = subl -n -w
 	excludesfile = ~/.gitignore_global
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[alias]
+	c = commit -v
