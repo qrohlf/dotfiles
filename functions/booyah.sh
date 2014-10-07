@@ -20,13 +20,13 @@ booyah() {
     VERBOSE=true    # enable notifications by default
     UPLOAD=true     # enable push to origin by default
     BROWSE=false    # disable browse by default
-    DEPLOY=true     # enable deploy by default
+    DEPLOY=false    # disable deploy by default
     local OPTIND    # http://stackoverflow.com/questions/16654607/using-getopts-inside-a-bash-function
     while getopts "qdbx" flag
     do
         case $flag in
             q) VERBOSE=false;;
-            d) DEPLOY=false;;
+            d) DEPLOY=true;;
             b) BROWSE=true;;
             x) UPLOAD=false;;
         esac
@@ -106,6 +106,6 @@ EOF
 }
 
 fuckitshipit() {
-  booyah
+  booyah -d
   :shipit:
 }
