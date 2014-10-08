@@ -1,6 +1,6 @@
 # Load rbenv
 if which rbenv > /dev/null;
-    then eval "$(rbenv init -)";
+  then eval "$(rbenv init -)";
 fi;
 
 # Load sexy-bash-prompt
@@ -15,9 +15,8 @@ fi;
 # ENV variables
 export EDITOR="vim"
 
-# Homebrew Bash Completion
-# This doubles the time it takes to login to a shell
-# (does not include git bash completion)
+# bash completion (requires bash 4)
+# installation: `brew tap homebrew/versions && brew install bash-completion2`
 if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-    . $(brew --prefix)/share/bash-completion/bash_completion
+  . $(brew --prefix)/share/bash-completion/bash_completion
 fi
