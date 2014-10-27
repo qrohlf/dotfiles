@@ -20,3 +20,6 @@ export EDITOR="vim"
 if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
   . $(brew --prefix)/share/bash-completion/bash_completion
 fi
+
+# for grading
+alias bonk='git clean -f . && git reset --hard HEAD && git checkout master && git pull --tags'

@@ -1,4 +1,5 @@
 #!/bin/sh
+# idempotent (won't break stuff if run multiple times)
 
 ln -s ~/.dotfiles/.inputrc ~/.inputrc
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig

@@ -7,5 +7,6 @@
   "wrap_width": 60,
   "word_wrap": true,
   "font_face": "Open Sans",
-  "font_size": 13
+  "font_size": 13,
+  "trim_trailing_white_space_on_save": false
 }
