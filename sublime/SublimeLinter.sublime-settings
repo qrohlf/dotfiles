@@ -21,6 +21,11 @@
                 "@disable": false,
                 "args": [],
                 "excludes": []
+            },
+            "jsxhint": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
             }
         },
         "mark_style": "outline",

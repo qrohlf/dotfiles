@@ -13,3 +13,4 @@
 	smudge = git-media-smudge %f
 [alias]
 	c = commit -v
+	ac = commit -av

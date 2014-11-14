@@ -3,18 +3,21 @@
 	[
 		"Base16 Color Schemes",
 		"Better CoffeeScript",
+		"Git",
 		"Jade",
 		"JavaScriptNext - ES6 Syntax",
-		"JSX",
 		"LESS",
 		"Markdown Extended",
 		"Markdown Preview",
 		"Prolog",
 		"Puppet",
+		"ReactJS",
 		"Sass",
 		"SublimeLinter",
 		"SublimeLinter-coffee",
 		"SublimeLinter-jshint",
+		"SublimeLinter-jsxhint",
+		"SublimeLinter-ruby",
 		"Theme - Spacegray",
 		"WordCount"
 	]

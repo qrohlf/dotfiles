@@ -12,7 +12,8 @@ fonts = Hash.from_xml(File.read(ENTITLEMENTS))["typekitSyncState"]["fonts"]
 Dir.mkdir("typekit_fonts") unless Dir.exists?("typekit_fonts")
 
 fonts.each do |font|
-  puts font["id"] + ' - ' + font["properties"]["fullName"]
-  font_path = FONTS_PATH+"/.#{font['id']}.otf";
-  FileUtils.copy(font_path, 'typekit_fonts/'+font["properties"]["fullName"]+'.otf')
+  font_path = FONTS_PATH+"/.#{font['id']}.otf"
+  font_dest = 'typekit_fonts/'+font["properties"]["fullName"]+'.otf'
+  FileUtils.copy(font_path, font_dest)
+  puts "#{font_path} -> #{font_dest}"
 end
