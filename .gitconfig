@@ -14,3 +14,4 @@
 [alias]
 	c = commit -v
 	ac = commit -av
+	s = status
