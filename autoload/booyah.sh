@@ -106,6 +106,6 @@ EOF
 }
 
 fuckitshipit() {
-  booyah -d
+  booyah -d "$@"
   :shipit:
 }
