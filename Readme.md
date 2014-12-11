@@ -9,4 +9,4 @@ echo '. .dotfiles/init.sh > ~/.bash_profile'
 ```
 
 ## Recommended usage:
-Cherry pick the stuff you find useful from `functions`
+Cherry pick the stuff you find useful from `autoload`
