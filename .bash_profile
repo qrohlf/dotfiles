@@ -21,5 +21,5 @@ if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
   . $(brew --prefix)/share/bash-completion/bash_completion
 fi
 
-# for grading
-alias bonk='git clean -f . && git reset --hard HEAD && git checkout master && git pull --tags'
+# for the wonderfulness
+light_black_on_default "\n`quoteme_pretty`\n\n"
