@@ -105,6 +105,11 @@ notify() {
 EOF
 }
 
+shipit() {
+  booyah -xd "$@"
+  :shipit:
+}
+
 fuckitshipit() {
   booyah -d "$@"
   :shipit:

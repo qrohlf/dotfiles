@@ -8,3 +8,4 @@ alias gitroot='cd $(git rev-parse --show-cdup)' # quickly cd to the repo root
 alias mm="middleman"
 alias flushdns="sudo killall -HUP mDNSResponder"
 alias be="bundle exec"
+alias xkcdpass="~/.dotfiles/scripts/xkcdpass.rb"
