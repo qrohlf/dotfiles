@@ -8,3 +8,8 @@
 "It's only 'work' if you'd rather be doing something else" -Dean Kamen
 "Hardware eventually fails. Software eventually works" -Michael Hartung
 "Premature optimization is the root of all evil" -Donald Knuth
+"Engineers like to solve problems. If there are no problems handily avialable, they will create their own problems." -Scott Adams
+"It always takes longer than you expect, even when you take into account Hofstadter's Law." -Hofstadter's Law
+"Some people, when confronted with a problem, think 'I know, I'll use regular expressions.' Now they have two problems." -Jamie Zawinski
+"The future is already here – it is just unevenly distributed" -William Gibson
+"The imagination of nature is far, far greater than the imagination of man." -Richard Feynman

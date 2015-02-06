@@ -22,4 +22,4 @@ if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
 fi
 
 # for the wonderfulness
-light_black_on_default "\n`quoteme_pretty`\n\n"
+blue_on_default "\n`quoteme_pretty`\n\n"
