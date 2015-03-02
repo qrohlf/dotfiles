@@ -1,22 +1,25 @@
 {
+	"in_process_packages":
+	[
+	],
 	"installed_packages":
 	[
+		"Babel",
 		"Base16 Color Schemes",
 		"Better CoffeeScript",
+		"ColorPicker",
 		"Git",
 		"Jade",
-		"JavaScriptNext - ES6 Syntax",
 		"LESS",
 		"Markdown Extended",
 		"Markdown Preview",
+		"Package Control",
 		"Prolog",
 		"Puppet",
-		"ReactJS",
 		"Sass",
+		"Stino",
 		"SublimeLinter",
 		"SublimeLinter-coffee",
-		"SublimeLinter-jshint",
-		"SublimeLinter-jsxhint",
 		"SublimeLinter-ruby",
 		"Theme - Spacegray",
 		"WordCount"
