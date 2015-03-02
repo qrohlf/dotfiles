@@ -1,1 +1,0 @@
-the command `brew leaves` gives all the non-dependency formula installed
