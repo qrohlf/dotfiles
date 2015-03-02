@@ -7,7 +7,7 @@
 	default = tracking
 [core]
 	editor = subl -n -w
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.dotfiles/config/gitignore_global
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f

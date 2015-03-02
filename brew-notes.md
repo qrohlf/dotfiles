@@ -1,5 +1,1 @@
-# some interesting bits to look into:
-
-Brew cask/caskfiles
-Brew font project
-brew tap caskroom/fonts
+the command `brew leaves` gives all the non-dependency formula installed

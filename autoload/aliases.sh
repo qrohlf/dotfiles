@@ -9,4 +9,3 @@ alias mm="middleman"
 alias flushdns="sudo killall -HUP mDNSResponder"
 alias be="bundle exec"
 alias xkcdpass="~/.dotfiles/scripts/xkcdpass.rb"
-alias rebash=". ~/.bash_profile" #re-source bash profile
