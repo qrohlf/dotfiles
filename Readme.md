@@ -6,7 +6,7 @@ To install the whole shebang:
 ```bash
 git clone git@github.com:qrohlf/dotfiles.git ~/.dotfiles
 echo '. .dotfiles/init.sh' >> ~/.bash_profile
-~/.dotfiles/install.sh
+# TODO a smarter way to manage symlinks!
 ```
 
 ## Recommended usage:

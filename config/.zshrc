@@ -1,12 +1,15 @@
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
-setopt appendhistory autocd extendedglob nomatch notify
+setopt autocd extendedglob nomatch notify share_history
 unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
+
+zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**'
 zstyle :compinstall filename '/Users/qrohlf/.zshrc'
 
 autoload -Uz compinit
@@ -30,3 +33,6 @@ fi;
 
 # for the wonderfulness
 blue_on_default "\n`quoteme_pretty`\n\n"
+
+# python stuff
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
