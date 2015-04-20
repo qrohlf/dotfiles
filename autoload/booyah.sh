@@ -46,7 +46,7 @@ booyah() {
         DEPLOY_SUCCESS=false
 
         # run the custom deploy script if it exists
-        if [ -a .shipit ]; then
+        if [[ -a .shipit ]]; then
             echo_highlight "running custom deploy script"
             if bash .shipit; then
                 DEPLOY_SUCCESS=true
