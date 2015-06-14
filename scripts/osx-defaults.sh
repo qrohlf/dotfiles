@@ -4,4 +4,7 @@
 defaults write com.apple.screencapture location ~/Downloads
 # Disable the window shadow on cmd+shift+4 space
 defaults write com.apple.screencapture disable-shadow -bool true
-killall SystemUIServer
+# Enable text selection in Quick Look
+defaults write com.apple.finder QLEnableTextSelection -bool TRUE
+# Apply changes
+killall SystemUIServer Finder
