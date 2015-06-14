@@ -16,6 +16,7 @@
 # -d deploy: push to heroku
 # -b browse: open on github/heroku
 booyah() {
+    set -e
     TITLE=${PWD##*/}
     VERBOSE=true    # enable notifications by default
     UPLOAD=true     # enable push to origin by default
@@ -72,7 +73,7 @@ booyah() {
     fi
 
     if [ "$BROWSE" = true ]; then
-        if [ -a .shipit-browse ]; then
+        if [ -e .shipit-browse ]; then
             open `cat .shipit-browse`;
         elif heroku info &> /dev/null; then
             heroku open
