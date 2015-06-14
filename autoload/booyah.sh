@@ -16,7 +16,6 @@
 # -d deploy: push to heroku
 # -b browse: open on github/heroku
 booyah() {
-    set -e
     TITLE=${PWD##*/}
     VERBOSE=true    # enable notifications by default
     UPLOAD=true     # enable push to origin by default
