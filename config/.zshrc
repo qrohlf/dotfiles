@@ -16,12 +16,23 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall'
 
+# up arrow search
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
 # Autojump, yo
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
+# python stuff
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+
 # boot up powerline-daemon and powerline
 powerline-daemon -q
-. $(brew --prefix)/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+. /Library/Python/2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # Load rbenv
 if which rbenv > /dev/null;
@@ -37,5 +48,5 @@ alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 # for the wonderfulness
 blue_on_default "\n`quoteme_pretty`\n\n"
 
-# python stuff
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+export NVM_DIR="/Users/qrohlf/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
