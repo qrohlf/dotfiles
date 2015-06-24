@@ -15,3 +15,6 @@
 	c = commit -v
 	ac = commit -av
 	s = status
+	ch = checkout
+[include]
+	path = .gitconfig_overrides
