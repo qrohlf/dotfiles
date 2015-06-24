@@ -40,13 +40,14 @@ if which rbenv > /dev/null;
 fi;
 
 # Load The Fuck
-alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+alias derp=fuck
 
 # Load dotfiles
 . ~/.dotfiles/init.sh
 
 # for the wonderfulness
-blue_on_default "\n`quoteme_pretty`\n\n"
+# blue_on_default "\n`quoteme_pretty`\n\n"
 
 export NVM_DIR="/Users/qrohlf/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
