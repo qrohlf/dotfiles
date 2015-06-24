@@ -12,3 +12,5 @@ alias xkcdpass="~/.dotfiles/scripts/xkcdpass.rb"
 alias rezsh="reset && source ~/.zshrc"
 alias cls="clear"
 alias chat="open ~/.dotfiles/resources/chat.html"
+alias s="subl"
+export EDITOR=subl

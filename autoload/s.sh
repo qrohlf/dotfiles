@@ -1,12 +1,12 @@
 #!/bin/bash
 # autojump mashed up with sublime text
 
-s() {
+sj() {
   j $1 && subl .
 }
 
 so() {
   BACK=`pwd`
-  s $1
+  sj $1
   cd "$BACK"
 }
