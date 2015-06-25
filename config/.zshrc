@@ -2,7 +2,7 @@
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
-setopt autocd extendedglob nomatch notify share_history correct menu_complete
+setopt autocd extendedglob nomatch notify correct menu_complete
 unsetopt beep
 bindkey -e
 #bindkey -M menuselect '^M' .accept-line # only hit enter once for menu select. Problematic for things involving multiple paths
