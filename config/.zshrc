@@ -31,6 +31,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
 # boot up powerline-daemon and powerline
+# (installation: sudo -H pip install powerline-status powerline-gitstatus)
 powerline-daemon -q
 . /Library/Python/2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
