@@ -6,5 +6,8 @@ defaults write com.apple.screencapture location ~/Downloads
 defaults write com.apple.screencapture disable-shadow -bool true
 # Enable text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE
+# Enable full keyboard access for all controls
+# (e.g. enable Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Apply changes
 killall SystemUIServer Finder
