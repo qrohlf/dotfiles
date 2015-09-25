@@ -1,6 +1,8 @@
 #!/bin/bash
 # autojump mashed up with sublime text
 
+alias s="subl"
+
 sj() {
   j $1 && subl .
 }
