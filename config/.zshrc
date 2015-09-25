@@ -50,5 +50,5 @@ alias derp=fuck
 # for the wonderfulness
 # blue_on_default "\n`quoteme_pretty`\n\n"
 
-export NVM_DIR="/Users/qrohlf/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
