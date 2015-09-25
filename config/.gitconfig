@@ -16,6 +16,8 @@
 	ac = commit -av
 	s = status
 	ch = checkout
+	oops = commit --amend --no-edit
+	unstage = reset HEAD --
 [include]
 	path = .gitconfig_overrides
 [filter "lfs"]
