@@ -11,5 +11,10 @@ defaults write com.apple.finder QLEnableTextSelection -bool TRUE
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Kill finder with cmd+q
 defaults write com.apple.finder NSUserKeyEquivalents -dict-add "Close All" -string "@q"
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+# Remove the spring loading delay for directories
+defaults write NSGlobalDomain com.apple.springing.delay -float 0
+
 # Apply changes
 killall SystemUIServer Finder
