@@ -15,6 +15,8 @@ defaults write com.apple.finder NSUserKeyEquivalents -dict-add "Close All" -stri
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # Remove the spring loading delay for directories
 defaults write NSGlobalDomain com.apple.springing.delay -float 0
+# enable the locate command in terminal
+sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
 
 # Apply changes
 killall SystemUIServer Finder
