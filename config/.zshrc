@@ -42,8 +42,6 @@ fi;
 
 # Load The Fuck
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
-alias derp=fuck
-
 # Load dotfiles
 . ~/.dotfiles/init.sh
 
