@@ -18,6 +18,7 @@
 	ch = checkout
 	oops = commit --amend --no-edit
 	unstage = reset HEAD --
+	tinder = add -p
 [include]
 	path = .gitconfig_overrides
 [filter "lfs"]
