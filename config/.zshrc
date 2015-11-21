@@ -10,7 +10,7 @@ bindkey -e
 zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**'
 zstyle :compinstall filename '/Users/qrohlf/.zshrc'
-zstyle ':completion:*' menu select=10 # use a cli menu for autocomplete >8
+zstyle ':completion:*' menu select=4 # use a cli menu for autocomplete >8
 
 autoload -Uz compinit
 compinit
