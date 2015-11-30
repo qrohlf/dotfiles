@@ -19,6 +19,7 @@
 	oops = commit --amend --no-edit
 	unstage = reset HEAD --
 	tinder = add -p
+	g = grep
 [include]
 	path = .gitconfig_overrides
 [filter "lfs"]
