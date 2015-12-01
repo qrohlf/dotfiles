@@ -26,3 +26,10 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[rerere]
+	enabled = true
+	autoupdate = true
+[format]
+	pretty = format:%C(yellow)%h%Creset%x09%an%x09%ad%x09%C(cyan)%s%Creset
+[log]
+	date = relative
