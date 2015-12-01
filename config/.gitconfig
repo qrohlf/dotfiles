@@ -30,6 +30,8 @@
 	enabled = true
 	autoupdate = true
 [format]
-	pretty = format:%C(yellow)%h%Creset%x09%an%x09%ad%x09%C(cyan)%s%Creset
+	pretty = format:%<(10,trunc)%C(yellow)%h%Creset%<(16,trunc)% an%<(12,trunc)% ad%C(cyan)% s%Creset
 [log]
 	date = relative
+[rebase]
+	instructionFormat = %<(12,trunc)%an %>(15,ltrunc)%ar %<(70,trunc)%s
