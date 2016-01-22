@@ -20,7 +20,8 @@
 				"function": "powerline.segments.shell.cwd",
 				"priority": 10,
 				"args": {
-					"dir_limit_depth": 3
+					"dir_limit_depth": 3,
+					"dir_shorten_len": 4
 				}
 			},
 			{

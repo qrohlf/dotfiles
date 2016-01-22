@@ -20,6 +20,8 @@
 	unstage = reset HEAD --
 	tinder = add -p
 	g = grep
+	co = checkout
+	pum = pull upstream master
 [include]
 	path = .gitconfig_overrides
 [filter "lfs"]
