@@ -1,10 +1,7 @@
 # Load rbenv
 if which rbenv > /dev/null;
-  then eval "$(rbenv init -)";
+  then eval "$(rbenv init -)"; #slow
 fi;
-
-# Load sexy-bash-prompt
-. ~/.bash_prompt
 
 # Load autojump
 [[ -s `brew --prefix`/etc/autojump.bash ]] && . `brew --prefix`/etc/autojump.bash
@@ -20,6 +17,3 @@ export EDITOR="vim"
 if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
   . $(brew --prefix)/share/bash-completion/bash_completion
 fi
-
-# for the wonderfulness
-blue_on_default "\n`quoteme_pretty`\n\n"
