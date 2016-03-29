@@ -1,0 +1,4 @@
+#!/bin/sh
+
+git fetch upstream
+git reset --hard "upstream/$(git rev-parse --abbrev-ref HEAD)"
