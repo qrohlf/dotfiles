@@ -22,6 +22,7 @@
 	g = grep
 	co = checkout
 	pum = pull upstream master
+	ru = reset-upstream
 [include]
 	path = .gitconfig_overrides
 [filter "lfs"]
