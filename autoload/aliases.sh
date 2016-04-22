@@ -18,3 +18,4 @@ alias 👊="git push -f"
 alias 🛁="git pull --rebase upstream master"
 alias oops="fuck"
 export EDITOR=subl
+alias nodesucks="nvm use && rm -rf node_modules && npm i"
