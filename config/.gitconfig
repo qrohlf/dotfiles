@@ -23,6 +23,7 @@
 	co = checkout
 	pum = pull upstream master
 	ru = reset-upstream
+	rekt = push -f --no-verify
 [include]
 	path = .gitconfig_overrides
 [filter "lfs"]
