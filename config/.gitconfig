@@ -8,6 +8,7 @@
 [core]
 	editor = atom --wait
 	excludesfile = ~/.dotfiles/config/gitignore_global
+	whitespace = -trailing-space
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
