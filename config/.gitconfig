@@ -6,7 +6,7 @@
 [push]
 	default = tracking
 [core]
-	editor = subl -n -w
+	editor = atom --wait
 	excludesfile = ~/.dotfiles/config/gitignore_global
 [filter "media"]
 	clean = git-media-clean %f
