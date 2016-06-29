@@ -1,0 +1,9 @@
+#!/bin/sh
+
+Basic outline:
+
+1. grab the owner & repo name from the upstream remote
+2. grab the branch name and fork user name from the local repo
+3. use the pulls api and use the head filter to grab open prs
+4. if open, pop open a browser window pointing to open pr
+5. if no open prs, pop open a browser window to pr against the base branch

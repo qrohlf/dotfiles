@@ -31,7 +31,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
 # boot up powerline-daemon and powerline
-# (installation: pip install powerline-status powerline-gitstatus)
+# (installation: brew install python && pip install powerline-status powerline-gitstatus)
 powerline-daemon -q
 . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
@@ -45,6 +45,9 @@ alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 
 # Load dotfiles
 . ~/.dotfiles/init.sh
+
+# Dockerish stuff
+eval "$(docker-machine env default)"
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
