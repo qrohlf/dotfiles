@@ -1,6 +1,6 @@
 #!/bin/bash
 
-whatbox() {
+kronk() {
   DEFAULT_LOC=~/Downloads
-  rsync -azvP --inplace "qrohlf@stew.whatbox.ca:'/home/qrohlf/files/$1'" ${2:-"$DEFAULT_LOC"}
+  rsync -azvP --inplace "qrohlf@kronk.wtf:'/home/qrohlf/downloads/completed/$1'" ${2:-"$DEFAULT_LOC"}
 }
