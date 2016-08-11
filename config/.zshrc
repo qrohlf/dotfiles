@@ -46,9 +46,6 @@ alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 # Load dotfiles
 . ~/.dotfiles/init.sh
 
-# Dockerish stuff
-eval "$(docker-machine env default)"
-
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 export PATH="/Users/qrohlf/.dotfiles/bin:$PATH"
