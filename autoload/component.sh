@@ -10,6 +10,19 @@ export const $1 = () => (
 )
 EOM
 
+cat << EOM > $1/$1.test.js
+/* eslint-env mocha */
+import {expect} from 'chai'
+
+import {$1} from './$1'
+
+describe('<$1 />', () => {
+  it('needs tests', () => {
+    throw 'needs tests'
+  })
+})
+EOM
+
 cat << EOM > $1/$1.scss
 .$1 {
 
