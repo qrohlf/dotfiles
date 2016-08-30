@@ -20,3 +20,4 @@ alias oops="fuck"
 export EDITOR=subl
 alias nodesucks="nvm use && rm -rf node_modules && npm i"
 alias disapprove="echo -n ಠ_ಠ | pbcopy"
+alias sl="sublimate"
