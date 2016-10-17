@@ -13,11 +13,13 @@ EOM
 cat << EOM > $1/$1.test.js
 /* eslint-env mocha */
 import {expect} from 'chai'
-
+import React from 'react'
+import {shallow} from 'enzyme'
 import {$1} from './$1'
 
 describe('<$1 />', () => {
   it('needs tests', () => {
+    const wrapper = shallow(<$1 />)
     throw 'needs tests'
   })
 })
