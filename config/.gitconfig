@@ -26,6 +26,7 @@
 	ru = reset-upstream
 	ro = reset-origin
 	rekt = push -f --no-verify
+	some = !git fetch upstream && git rebase upstream/master
 [include]
 	path = .gitconfig_overrides
 [filter "lfs"]
