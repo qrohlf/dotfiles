@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'fileutils'
 require 'rubygems'
 require 'active_support/core_ext/hash/conversions'
 
