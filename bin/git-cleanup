@@ -1,3 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+git checkout master
 git branch --merged master | grep -v "^\* master$" | xargs -n 1 git branch -d
 # git remote prune `git remote` # possibly breaks things
