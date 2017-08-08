@@ -1,8 +1,13 @@
+# some helpful filters (-vf $FOOBAR)
 # iphone 6 videos
 # SCALE=240:-1
 # android nexus videos
 # SCALE=242:-1
+# crop dumb keynote black bars for garmin
+# crop=200:265:1180:588
 
-SCALE=240:-1
-ffmpeg -i $1 -vf scale=$SCALE -c:v libvpx -crf 10 -b:v 1M -c:a libvorbis $2.webm
-ffmpeg -i $1 -vf scale=$SCALE -vcodec h264 -acodec aac -strict -2 $2.mp4
+# install: brew install ffmpeg --with-libvpx
+
+SCALE=450:-1
+ffmpeg -i $1 -an -vf SCALE=240:-1 -c:v libvpx -crf 10 -b:v 1M $2.webm
+ffmpeg -i $1 -an -vf SCALE=240:-1 -vcodec h264 -strict -2 $2.mp4
