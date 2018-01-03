@@ -8,6 +8,6 @@
 
 # install: brew install ffmpeg --with-libvpx
 
-SCALE=450:-1
-ffmpeg -i $1 -an -vf SCALE=240:-1 -c:v libvpx -crf 10 -b:v 1M $2.webm
-ffmpeg -i $1 -an -vf SCALE=240:-1 -vcodec h264 -strict -2 $2.mp4
+# SCALE=450:-1
+ffmpeg -i $1 -an -vf scale=450:-1 -c:v libvpx -crf 10 -b:v 1M $2.webm
+ffmpeg -i $1 -an -vf scale=450:-1 -vcodec h264 -strict -2 $2.mp4
