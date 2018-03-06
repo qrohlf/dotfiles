@@ -13,6 +13,7 @@
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
 [alias]
+	head = rev-parse --short head
 	c = commit -v
 	ac = commit -av
 	s = status
