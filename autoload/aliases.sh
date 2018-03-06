@@ -22,3 +22,4 @@ export EDITOR=subl
 alias nodesucks="nvm use && rm -rf node_modules && npm i"
 alias disapprove="echo -n ಠ_ಠ | pbcopy && echo 'ಠ_ಠ copied to clipboard'"
 alias sl="sublimate"
+alias c="bones component"
