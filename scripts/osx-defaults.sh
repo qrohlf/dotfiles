@@ -17,6 +17,9 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write NSGlobalDomain com.apple.springing.delay -float 0
 # enable the locate command in terminal
 sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+# speed up dock animations
+defaults write com.apple.dock autohide-time-modifier -float 1.0
+defaults write com.apple.dock autohide-delay -float 0.2
 
 # Apply changes
-killall SystemUIServer Finder
+killall SystemUIServer Finder Dock
