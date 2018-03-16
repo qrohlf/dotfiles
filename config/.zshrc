@@ -2,7 +2,7 @@
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
-setopt autocd extendedglob nomatch notify correct menu_complete
+setopt autocd extendedglob nomatch notify menu_complete
 unsetopt beep
 bindkey -e
 #bindkey -M menuselect '^M' .accept-line # only hit enter once for menu select. Problematic for things involving multiple paths
@@ -49,3 +49,14 @@ alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 export PATH="/Users/qrohlf/.dotfiles/bin:$PATH:/Users/qrohlf/Code/connectiq/connectiq-sdk-mac-2.2.1/bin"
+
+chaos_burst() {
+  NUM=$(( $RANDOM % 10000 ))
+  EFFECT=`sed "${NUM}q;d" ~/.dotfiles/resources/chaos_bursts.txt`
+  light_black_on_default "\nThe casting fails. The following effect is applied for 1d10 turns:\n"
+  light_black_on_default $NUM": "
+  cyan_on_default $EFFECT"\n\n"
+}
+
+# todo package this up into an easy-install curl script
+trap 'chaos_burst' ERR
