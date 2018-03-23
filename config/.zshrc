@@ -52,8 +52,9 @@ export PATH="/Users/qrohlf/.dotfiles/bin:$PATH:/Users/qrohlf/Code/connectiq/conn
 
 chaos_burst() {
   NUM=$(( $RANDOM % 10000 ))
+  TURNS=$(( $RANDOM % 20 ))
   EFFECT=`sed "${NUM}q;d" ~/.dotfiles/resources/chaos_bursts.txt`
-  light_black_on_default "\nThe casting fails. The following effect is applied for 1d10 turns:\n"
+  light_black_on_default "\nThe incantation fails. The following effect is applied for $TURNS turns:\n"
   light_black_on_default $NUM": "
   cyan_on_default $EFFECT"\n\n"
 }

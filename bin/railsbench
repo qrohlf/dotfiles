@@ -1,0 +1,98 @@
+#!/usr/bin/env node
+// # requirements:
+// # add https://github.com/dpogue/rails_server_timings to your :development gem set
+// #
+// # usage:
+// # railsbench URL1 URL2 NUM_TESTS TIMING_VALUE
+const childProcess = require('child_process')
+const ttest = require('ttest')
+const stats = require('simple-statistics')
+
+const [_, __, CONTROL, CANDIDATE, NUM_TESTS] = process.argv
+
+const collectViewTiming = (url) => {
+  const curlView = childProcess.execSync(
+    `curl -H 'Cache-Control: no-cache' -sS -o /dev/null -D - "${url}" | grep -i 'Server-Timing: '`,
+    {encoding: 'utf8'}
+  )
+  const viewTiming = curlView.match(/^Server-Timing.*view; dur=(\d+\.?\d*)/)[1]
+  return parseFloat(viewTiming)
+}
+
+const collectTTFBTiming = (url) => {
+  const ttfb = childProcess.execSync(
+    `curl -H 'Cache-Control: no-cache' -sS -o /dev/null -w '%{time_starttransfer}' "${url}"`,
+    {encoding: 'utf8'}
+  )
+  return parseFloat(ttfb) * 1000
+}
+
+// todo: also collect and test ttfb timing
+const collectTimings = (url, numTests) => {
+  const viewTimings = []
+  const ttfbTimings = []
+  for (let i = 0; i < numTests; i++) {
+    viewTimings.push(collectViewTiming(url))
+    ttfbTimings.push(collectTTFBTiming(url))
+    process.stdout.write('.')
+  }
+  console.log('')
+  return {viewTimings, ttfbTimings}
+}
+
+const printSummary = (timings, label) => {
+  const min = stats.min(timings)
+  const max = stats.max(timings)
+  const median = stats.median(timings)
+  const mean = stats.mean(timings)
+  const stdDev = stats.standardDeviation(timings)
+  const f = n => n.toLocaleString('en-US', {maxiumFractionDigits: 1})
+  console.log(`
+Timing summary for ${label}:
+min: ${f(min)}ms
+max: ${f(max)}ms
+stdDev: ${f(stdDev)}ms
+median: ${f(median)}ms
+mean: ${f(mean)}ms
+`)
+}
+
+const doTTest = (candidate, control) => {
+  const stat = ttest(control, candidate)
+  if (stat.valid()) {
+    console.log('No statistically significant difference in load times')
+    console.log(`p=${stat.pValue()}`)
+  } else {
+    console.log('Null hypothesis rejected')
+    console.log('candidate and control timing differences are statistically significant')
+    console.log(`p=${stat.pValue()}`)
+  }
+}
+
+// T-Test details:
+//
+// H0 (null hypothesis) - timingsControl and timingsCandidate are not
+// significantly different
+//
+// HA (alternate hypothesis) - timingsControl and timingsCandidate are
+// significantly different
+
+console.log(`gathering data for control ${CONTROL}`)
+const timingsControl = collectTimings(CONTROL, NUM_TESTS)
+
+console.log(`gathering data for candidate ${CANDIDATE}`)
+const timingsCandidate = collectTimings(CANDIDATE, NUM_TESTS)
+
+console.log(`\n\n\n${NUM_TESTS} data points collected`)
+
+printSummary(timingsControl.viewTimings, 'control view timings')
+printSummary(timingsCandidate.viewTimings, 'candidate view timings')
+
+printSummary(timingsControl.ttfbTimings, 'control ttfb timings')
+printSummary(timingsCandidate.ttfbTimings, 'candidate ttfb timings')
+
+console.log('running t-test on view timings:')
+doTTest(timingsControl.viewTimings, timingsCandidate.viewTimings)
+console.log('')
+console.log('running t-test on ttfb timings:')
+doTTest(timingsControl.ttfbTimings, timingsCandidate.ttfbTimings)

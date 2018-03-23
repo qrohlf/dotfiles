@@ -1,0 +1,13 @@
+#!/bin/bash
+# file: ttfb.sh
+# curl command to check the time to first byte
+# source: https://gist.github.com/sandeepraju/1f5fbdbdd89551ba7925abe2645f92b5
+# ** usage **
+# 1. ./ttfb.sh "https://google.com"
+# 2. seq 10 | xargs -n 1 ttfb "https://google.com"
+
+curl -o /dev/null \
+     -H 'Cache-Control: no-cache' \
+     -s \
+     -w "Connect: %{time_connect} TTFB: %{time_starttransfer} Total time: %{time_total} \n" \
+     $1
