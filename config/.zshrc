@@ -13,7 +13,7 @@ zstyle :compinstall filename '/Users/qrohlf/.zshrc'
 zstyle ':completion:*' menu select=4 # use a cli menu for autocomplete >8
 
 autoload -Uz compinit
-compinit
+compinit # this is erroring?
 # End of lines added by compinstall'
 
 # up arrow search
@@ -60,4 +60,4 @@ chaos_burst() {
 }
 
 # todo package this up into an easy-install curl script
-trap 'chaos_burst' ERR
+trap '[ "$?" -eq 127 ] && chaos_burst' ERR
