@@ -15,7 +15,7 @@ const collectViewTiming = (url) => {
     `curl -H 'Cache-Control: no-cache' -sS -o /dev/null -D - "${url}" | grep -i 'Server-Timing: '`,
     {encoding: 'utf8'}
   )
-  const viewTiming = curlView.match(/^Server-Timing.*view; dur=(\d+\.?\d*)/)[1]
+  const viewTiming = curlView.match(/^Server-Timing.*view; dur=(\d+\.?\d*)/i)[1]
   return parseFloat(viewTiming)
 }
 
