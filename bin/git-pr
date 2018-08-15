@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const https = require('https')
 const path = require('path')
+const url = require('url')
 const {homedir} = require('os')
 const {execSync} = require('child_process')
 const {readFileSync} = require('fs')
@@ -31,30 +32,39 @@ const open = (url) => {
     : execSync(`xdg-open "${url}"`)
 }
 
-const owner = 'ridewithgps'
-const repo = 'rwgps-ui'
-const branch = 'mega_excellent'
-const token = readFileSync(path.join(homedir(), '.gh_token'), {encoding: 'utf8'}).trim()
-
-const query = `head:"${branch}" repo:"${owner}/${repo}"`
-
-const search = `/search/issues?q=${encodeURIComponent(query)}`
-const headers = {
-  'Authorization': `token ${token}`,
-  'User-Agent': '@qrohlf'
-}
+const cmd = (script) => execSync(script, {encoding: 'utf8'}).trim()
 
 const main = async () => {
+
+  const upstream = cmd('git config --get remote.upstream.url')
+  const repo = upstream.match(/^git@github.com:([\w\/]+).git$/)[1]
+  const branch = cmd('git rev-parse --abbrev-ref HEAD')
+  const token = readFileSync(path.join(homedir(), '.gh_token'), {encoding: 'utf8'}).trim()
+
+  const query = `head:"${branch}" repo:"${repo}"`
+
+  const search = `/search/issues?q=${encodeURIComponent(query)}`
+  const headers = {
+    'Authorization': `token ${token}`,
+    'User-Agent': '@qrohlf/git-pr'
+  }
+
   try {
     const {items} = await get(search, {headers})
     if (items.length === 0) {
-      console.log('no PR found')
+      console.log(`no PRs found for branch '${branch}'`)
+      process.exit(1)
+    }
+    if (items.length > 1) {
+      const webSearch = `https://github.com/issues?utf8=✓&q=${encodeURIComponent(query)}`
+      console.log(`multiple PRs found, see ${webSearch} for list`)
     }
     const url = items[0].html_url
-    console.log('🌎 ' + url + '\n')
+    console.log('🌎 opening ' + url + '\n')
     open(url)
   } catch (e) {
     console.log(e)
+    process.exit(1)
   }
 }
 
