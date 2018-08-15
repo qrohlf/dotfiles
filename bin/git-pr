@@ -37,7 +37,7 @@ const cmd = (script) => execSync(script, {encoding: 'utf8'}).trim()
 const main = async () => {
 
   const upstream = cmd('git config --get remote.upstream.url')
-  const repo = upstream.match(/^git@github.com:([\w\/]+).git$/)[1]
+  const repo = upstream.match(/^git@github.com:([^\s]+).git$/)[1]
   const branch = cmd('git rev-parse --abbrev-ref HEAD')
   const token = readFileSync(path.join(homedir(), '.gh_token'), {encoding: 'utf8'}).trim()
 
