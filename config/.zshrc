@@ -28,7 +28,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 # python stuff
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+# export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
 # boot up powerline-daemon and powerline
 # (installation: brew install python && pip install powerline-status powerline-gitstatus)

@@ -1,9 +1,61 @@
-#!/bin/sh
+#!/usr/bin/env node
+const https = require('https')
+const path = require('path')
+const {homedir} = require('os')
+const {execSync} = require('child_process')
+const {readFileSync} = require('fs')
 
-Basic outline:
+const get = (path, options) => new Promise((resolve, reject) => {
+  const opts = {
+    protocol: 'https:',
+    host: 'api.github.com',
+    path,
+  ...options}
+  const req = https.get(opts, res => {
+    let body = ''
+    res.on('data', chunk => {
+      body += chunk
+    })
+    res.on('end', () => {
+      res.statusCode === 200
+        ? resolve(JSON.parse(body))
+        : reject(Error(`request failed with status code ${res.statusCode}: ${body}`))
+    })
+  })
+  req.on('error', reject)
+})
 
-1. grab the owner & repo name from the upstream remote
-2. grab the branch name and fork user name from the local repo
-3. use the pulls api and use the head filter to grab open prs
-4. if open, pop open a browser window pointing to open pr
-5. if no open prs, pop open a browser window to pr against the base branch
+const open = (url) => {
+  process.platform === 'darwin'
+    ? execSync(`open "${url}"`)
+    : execSync(`xdg-open "${url}"`)
+}
+
+const owner = 'ridewithgps'
+const repo = 'rwgps-ui'
+const branch = 'mega_excellent'
+const token = readFileSync(path.join(homedir(), '.gh_token'), {encoding: 'utf8'}).trim()
+
+const query = `head:"${branch}" repo:"${owner}/${repo}"`
+
+const search = `/search/issues?q=${encodeURIComponent(query)}`
+const headers = {
+  'Authorization': `token ${token}`,
+  'User-Agent': '@qrohlf'
+}
+
+const main = async () => {
+  try {
+    const {items} = await get(search, {headers})
+    if (items.length === 0) {
+      console.log('no PR found')
+    }
+    const url = items[0].html_url
+    console.log('🌎 ' + url + '\n')
+    open(url)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+main()
