@@ -1,4 +1,13 @@
 #!/usr/bin/env node
+
+// Open the current Github PR for your current branch by running `git pr`
+//
+// Requires a personal access token to be saved to a file in ~/.gh_token,
+// grab an access token here:
+// https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+//
+// Also requires an `upstream` remote to be configured and pointing at a github
+// repo
 const https = require('https')
 const path = require('path')
 const url = require('url')
