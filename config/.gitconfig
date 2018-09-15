@@ -4,11 +4,12 @@
 [color]
 	ui = true
 [push]
-	default = tracking
+	default = current
 [core]
 	editor = subl -n -w
 	excludesfile = ~/.dotfiles/config/gitignore_global
 	whitespace = -trailing-space
+	ignorecase = false
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
