@@ -21,7 +21,7 @@
 	ch = checkout
 	oops = commit --amend --no-edit
 	unstage = reset HEAD --
-	tinder = add -p
+	short = rev-parse --short HEAD
 	g = grep
 	co = checkout
 	pum = pull upstream master
