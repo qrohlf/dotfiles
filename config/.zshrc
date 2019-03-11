@@ -33,7 +33,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # boot up powerline-daemon and powerline
 # (installation: brew install python && pip install powerline-status powerline-gitstatus)
 powerline-daemon -q
-. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+. /usr/local/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # Load rbenv
 if which rbenv > /dev/null;
