@@ -6,6 +6,7 @@ alias wub="booyah -xb" # wub == web
 alias ls="ls -G" # colored ls output
 alias duh="du -sh" # quick file/directory size
 alias gitroot='cd $(git rev-parse --show-cdup)' # quickly cd to the repo root
+alias gr="gitroot"
 alias mm="middleman"
 alias flushdns="sudo discoveryutil udnsflushcaches"
 alias be="bundle exec"
