@@ -1,7 +1,9 @@
 #!/bin/bash
+MAIN_BRANCH="${1:-master}"
+
 set -euo pipefail
 IFS=$'\n\t'
-git checkout master
-git branch --merged master | grep -v "^\* master$" | xargs -n 1 git branch -d
+git checkout "$MAIN_BRANCH"
+git branch --merged "$MAIN_BRANCH" | grep -v "^\* $MAIN_BRANCH$" | xargs -n 1 git branch -d
 git fetch -p
 # git remote prune `git remote` # possibly breaks things
