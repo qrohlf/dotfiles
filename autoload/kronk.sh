@@ -2,5 +2,5 @@
 
 kronk() {
   DEFAULT_LOC=~/Downloads
-  rsync -azvP --inplace "qrohlf@kronk.wtf:'/home/qrohlf/downloads/complete/$1'" ${2:-"$DEFAULT_LOC"}
+  rsync -azvP --inplace "coboid@viking.whatbox.ca:'/home/coboid/files/$1'" ${2:-"$DEFAULT_LOC"}
 }
