@@ -24,40 +24,35 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
-# Autojump, yo
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+# boot up pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
-# python stuff
-# export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+# boot up powerline
+# TODO - this is definitely slowing down shell boot. Maybe setup powerline-daemon to boot on startup?
+. ~/.pyenv/versions/3.9.0/lib/python3.9/site-packages/powerline/bindings/zsh/powerline.zsh
 
-# boot up powerline-daemon and powerline
-# (installation: brew install python && pip install powerline-status powerline-gitstatus)
-powerline-daemon -q
-. /usr/local/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
+# boot up FASD
+eval "$(fasd --init auto)"
 
-# Load rbenv
-if which rbenv > /dev/null;
-  then eval "$(rbenv init -)";
-fi;
+# ALIASES
+alias j='fasd_cd -d'
+alias g='git'
+alias s='subl'
+alias rezsh="reset && source ~/.zshrc"
+alias cls="clear && printf '\e[3J' && printf '\e]50;ClearScrollback\a'"
 
-# Load The Fuck
-alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+# disabled for now:
+# chaos_burst() {
+#   NUM=$(( $RANDOM % 10000 ))
+#   TURNS=$(( $RANDOM % 20 ))
+#   EFFECT=`sed "${NUM}q;d" ~/.dotfiles/resources/chaos_bursts.txt`
+#   light_black_on_default "\nThe incantation fails. The following effect is applied for $TURNS turns:\n"
+#   light_black_on_default $NUM": "
+#   cyan_on_default $EFFECT"\n\n"
+# }
 
-# Load dotfiles
-. ~/.dotfiles/init.sh
+# # todo package this up into an easy-install curl script
+# trap '[ "$?" -eq 127 ] && chaos_burst' ERR
 
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-export PATH="/Users/qrohlf/.dotfiles/bin:$PATH:/Users/qrohlf/Code/connectiq/connectiq-sdk-mac-2.2.1/bin"
-
-chaos_burst() {
-  NUM=$(( $RANDOM % 10000 ))
-  TURNS=$(( $RANDOM % 20 ))
-  EFFECT=`sed "${NUM}q;d" ~/.dotfiles/resources/chaos_bursts.txt`
-  light_black_on_default "\nThe incantation fails. The following effect is applied for $TURNS turns:\n"
-  light_black_on_default $NUM": "
-  cyan_on_default $EFFECT"\n\n"
-}
-
-# todo package this up into an easy-install curl script
-trap '[ "$?" -eq 127 ] && chaos_burst' ERR
