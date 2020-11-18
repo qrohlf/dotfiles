@@ -6,8 +6,8 @@
 // grab an access token here:
 // https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
 //
-// Also requires an `upstream` remote to be configured and pointing at a github
-// repo
+// Also requires an `upstream` or `origin` remote to be configured and pointing
+// at a github repo
 const https = require('https')
 const path = require('path')
 const url = require('url')
@@ -45,7 +45,13 @@ const cmd = (script) => execSync(script, {encoding: 'utf8'}).trim()
 
 const main = async () => {
 
-  const upstream = cmd('git config --get remote.upstream.url')
+  const upstream = (() => {
+    try {
+      return cmd('git config --get remote.upstream.url')
+    } catch (_) {
+      return cmd('git config --get remote.origin.url')
+    }
+  })()
   const repo = upstream.match(/^git@github.com:([^\s]+).git$/)[1]
   const branch = cmd('git rev-parse --abbrev-ref HEAD')
   const token = readFileSync(path.join(homedir(), '.gh_token'), {encoding: 'utf8'}).trim()
