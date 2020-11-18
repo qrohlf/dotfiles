@@ -33,6 +33,9 @@ fi
 # TODO - this is definitely slowing down shell boot. Maybe setup powerline-daemon to boot on startup?
 . ~/.pyenv/versions/3.9.0/lib/python3.9/site-packages/powerline/bindings/zsh/powerline.zsh
 
+# boot up direnv
+eval "$(direnv hook zsh)"
+
 # boot up FASD
 eval "$(fasd --init auto)"
 
@@ -40,8 +43,16 @@ eval "$(fasd --init auto)"
 alias j='fasd_cd -d'
 alias g='git'
 alias s='subl'
+so() {
+  subl `fasd -d $1`
+}
 alias rezsh="reset && source ~/.zshrc"
 alias cls="clear && printf '\e[3J' && printf '\e]50;ClearScrollback\a'"
+alias chat="open ~/.dotfiles/resources/chat.html"
+alias kelvin="open ~/.dotfiles/resources/kelvin.html"
+
+# load Kronk util
+. ~/.dotfiles/autoload/kronk.sh
 
 # disabled for now:
 # chaos_burst() {
@@ -56,3 +67,11 @@ alias cls="clear && printf '\e[3J' && printf '\e]50;ClearScrollback\a'"
 # # todo package this up into an easy-install curl script
 # trap '[ "$?" -eq 127 ] && chaos_burst' ERR
 
+
+# boot up NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# add ~/.dotfiles/bin to PATH
+export PATH="$HOME/.dotfiles/bin:$PATH"
