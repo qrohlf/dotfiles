@@ -1,0 +1,59 @@
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Chat</title>
+  <style>
+    html {
+      height: 100%;
+      width: 100%;
+    }
+
+    html, body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100%;
+      font-family: 'Menlo', monospace;
+      color: #333333;
+      padding: 20px;
+      font-size: 15px;
+      text-align: center;
+      box-sizing: border-box;
+      background-color: #FFF;
+      /*transition: background-color 200ms ease;*/
+    }
+
+    #tempDisplay {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id='tempDisplay'></div>
+  <script src="./chroma.min.js"></script>
+  <script>
+    const defaultTemp = +localStorage.getItem('temp') || 5500
+    let currentTemp = defaultTemp
+
+    const applyTemp = (temp) => {
+      localStorage.setItem('temp', temp)
+      tempDisplay.innerHTML = temp
+      const hexCode = chroma.temperature(temp).hex()
+      document.body.style.backgroundColor = hexCode
+    }
+
+    applyTemp(currentTemp)
+
+    document.body.addEventListener('wheel', e => {
+      currentTemp -= e.deltaY
+      applyTemp(currentTemp)
+      console.log(currentTemp)
+    })
+  </script>
+</body>
+</html>
