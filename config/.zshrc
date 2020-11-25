@@ -12,6 +12,14 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|
 zstyle :compinstall filename '/Users/qrohlf/.zshrc'
 zstyle ':completion:*' menu select=4 # use a cli menu for autocomplete >8
 
+# boot up homebrew zsh completion
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
 autoload -Uz compinit
 compinit # this is erroring?
 # End of lines added by compinstall'
@@ -28,6 +36,11 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+# boot up NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # boot up powerline
 # TODO - this is definitely slowing down shell boot. Maybe setup powerline-daemon to boot on startup?
@@ -66,12 +79,6 @@ alias kelvin="open ~/.dotfiles/resources/kelvin.html"
 
 # # todo package this up into an easy-install curl script
 # trap '[ "$?" -eq 127 ] && chaos_burst' ERR
-
-
-# boot up NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # add ~/.dotfiles/bin to PATH
 export PATH="$HOME/.dotfiles/bin:$PATH"
