@@ -10,7 +10,7 @@
 			},
 			{
 				"function": "powerline.segments.common.env.user",
-				"priority": 30
+				"priority": 10
 			},
 			{
 				"function": "powerline.segments.common.env.virtualenv",
@@ -18,9 +18,9 @@
 			},
 			{
 				"function": "powerline.segments.shell.cwd",
-				"priority": 10,
+				"priority": 30,
 				"args": {
-					"dir_limit_depth": 3
+					"dir_limit_depth": 2
 				}
 			},
 			{
