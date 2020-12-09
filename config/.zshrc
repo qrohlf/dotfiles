@@ -39,8 +39,30 @@ fi
 
 # boot up NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+
+# NVM zsh integration
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
 
 # boot up powerline
 # TODO - this is definitely slowing down shell boot. Maybe setup powerline-daemon to boot on startup?
@@ -59,6 +81,8 @@ alias s='subl'
 so() {
   subl `fasd -d $1`
 }
+alias up='cd ..'
+alias gh='git github'
 alias rezsh="reset && source ~/.zshrc"
 alias cls="clear && printf '\e[3J' && printf '\e]50;ClearScrollback\a'"
 alias chat="open ~/.dotfiles/resources/chat.html"
