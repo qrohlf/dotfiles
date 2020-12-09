@@ -53,37 +53,9 @@ const main = async () => {
     }
   })()
   const repo = upstream.match(/^git@github.com:([^\s]+).git$/)[1]
-  const branch = cmd('git rev-parse --abbrev-ref HEAD')
-  const token = readFileSync(path.join(homedir(), '.gh_token'), {encoding: 'utf8'}).trim()
-
-  const query = `head:"${branch}" repo:"${repo}"`
-
-  const search = `/search/issues?q=${encodeURIComponent(query)}`
-  const headers = {
-    'Authorization': `token ${token}`,
-    'User-Agent': '@qrohlf/git-pr'
-  }
-
-  try {
-    const {items} = await get(search, {headers})
-    if (items.length === 0) {
-      console.log(`no PRs found for branch '${branch}'`)
-      const createPullURL = `https://github.com/${repo}/pull/new/${branch}`
-      console.log('🌎 create new PR: ' + createPullURL + '\n')
-      open(createPullURL)
-      process.exit(0)
-    }
-    if (items.length > 1) {
-      const webSearch = `https://github.com/issues?utf8=✓&q=${encodeURIComponent(query)}`
-      console.log(`multiple PRs found, see ${webSearch} for list`)
-    }
-    const url = items[0].html_url
-    console.log('🌎 opening ' + url + '\n')
-    open(url)
-  } catch (e) {
-    console.log(e)
-    process.exit(1)
-  }
+  const gh = `https://github.com/${repo}/`
+  console.log('🌎 ' + gh + '\n')
+  open(gh)
 }
 
 main()
