@@ -1,0 +1,3 @@
+#!/bin/bash
+export GITHUB_TOKEN=`cat ~/.gh_token`
+hub ci-status --format "%sC%t %S%n"
