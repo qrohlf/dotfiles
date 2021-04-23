@@ -1,5 +1,0 @@
-{
-    "cmd": "osascript -e 'tell app \"Terminal\" \n do script \n \"acom $file && ./a.out\" \nend tell'",
-    "working_dir": "$file_path",
-    "shell": true
-}
