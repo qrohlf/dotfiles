@@ -71,22 +71,42 @@ load-nvmrc
 # boot up direnv
 eval "$(direnv hook zsh)"
 
-# boot up FASD
-eval "$(fasd --init auto)"
+# boot up autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # ALIASES
-alias j='fasd_cd -d'
+up() {
+  cd ../ && $@;
+}
 alias g='git'
 alias s='subl'
-so() {
-  subl `fasd -d $1`
+sj() {
+  j $1 && subl .
 }
-alias up='cd ..'
+
+so() {
+  sj $1
+  cd - &> /dev/null
+}
 alias gh='git github'
 alias rezsh="reset && source ~/.zshrc"
 alias cls="clear && printf '\e[3J' && printf '\e]50;ClearScrollback\a'"
 alias chat="open ~/.dotfiles/resources/chat.html"
 alias kelvin="open ~/.dotfiles/resources/kelvin.html"
+alias c="bones component"
+source ~/.dotfiles/autoload/jump_to_git_root.sh
+alias gr=jump_to_git_root
+new_project() {
+  mkdir "$1"
+  cd "$1"
+  touch .gitignore
+  git init
+  git add .gitignore
+  git commit -m "initial commit"
+}
+
+# I don't like precommit hooks, disable husky (can be re-enabled with a .direnv)
+export HUSKY=0
 
 # load Kronk util
 . ~/.dotfiles/autoload/kronk.sh

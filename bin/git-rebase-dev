@@ -1,5 +1,4 @@
 #!/bin/sh
 
 git fetch origin && \
-git rebase origin/development && \
-git push --force
+git rebase origin/development

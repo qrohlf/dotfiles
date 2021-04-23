@@ -15,6 +15,7 @@
 	smudge = git-media-smudge %f
 [alias]
 	head = rev-parse --short head
+	head-long = rev-parse head
 	c = commit -v
 	ac = commit -av
 	s = status
@@ -46,3 +47,5 @@
 	instructionFormat = %<(12,trunc)%an %>(15,ltrunc)%ar %<(70,trunc)%s
 [grep]
 	lineNumber = true
+[pull]
+	ff = only

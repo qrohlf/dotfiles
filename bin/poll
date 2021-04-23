@@ -1,0 +1,7 @@
+#!/bin/bash
+
+while true; do
+  clear && printf '\e[3J' && printf '\e]50;ClearScrollback\a'
+  $@
+  sleep 30
+done

@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# note that you might have to give iTerm/Terminal special permissions here:
+# https://twitter.com/holman/status/1372244951342358528
+
 # Save screenshots to Downloads folder
 defaults write com.apple.screencapture location ~/Downloads
 # Disable the window shadow on cmd+shift+4 space
