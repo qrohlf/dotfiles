@@ -13,6 +13,7 @@ defaults write com.apple.finder QLEnableTextSelection -bool TRUE
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Kill finder with cmd+q
+# for some reason this doesn't appear to kick in until you open the "File" menu?
 defaults write com.apple.finder NSUserKeyEquivalents -dict-add "Close All" -string "@q"
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
