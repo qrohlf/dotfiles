@@ -1,2 +1,4 @@
 #!/bin/bash
 sudo sysctl -w net.inet.ip.ttl=65
+# (change 65 to 64 to reset to the default)
+# note - if you want to do this permanently: https://superuser.com/questions/1335028/how-do-you-change-the-ttl-in-macos-high-sierra
