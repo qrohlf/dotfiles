@@ -7,7 +7,6 @@
 	default = current
 [core]
 	editor = subl -n -w
-	excludesfile = ~/.dotfiles/config/gitignore_global
 	whitespace = -trailing-space
 	ignorecase = false
 [filter "media"]
