@@ -12,7 +12,6 @@ so() {
   sj $1
   cd - &> /dev/null
 }
-alias gh='git github'
 alias rezsh="reset && source ~/.zshrc"
 alias cls="clear && printf '\e[3J' && printf '\e]50;ClearScrollback\a'"
 alias chat="open ~/.dotfiles/resources/chat.html"

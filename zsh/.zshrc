@@ -39,6 +39,10 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # set up NVM
 . ~/.dotfiles/zsh/nvm-setup.sh
 
+# set up rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 # boot up direnv
 eval "$(direnv hook zsh)"
 
@@ -50,3 +54,7 @@ eval "$(direnv hook zsh)"
 
 # I don't like precommit hooks, disable husky (can be re-enabled with a .direnv)
 export HUSKY=0
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

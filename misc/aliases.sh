@@ -1,7 +1,6 @@
 # Handy aliases
 # alias disapprove=~/.disapprove.sh # uselessness (github.com/qrohlf/look-of-disapproval)
 alias g="git"
-alias gh="hub browse" # open github for the current repo
 alias wub="booyah -xb" # wub == web
 alias ls="ls -G" # colored ls output
 alias duh="du -sh" # quick file/directory size
