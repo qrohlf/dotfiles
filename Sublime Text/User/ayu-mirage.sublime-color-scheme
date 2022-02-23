@@ -1,0 +1,24 @@
+// personal overrides for the ayu-mirage theme
+
+{
+  "globals": {
+    "foreground": "#f1f3f5",
+  },
+  "rules": [
+    {
+      "name": "String",
+      "scope": "string, constant.other.symbol",
+      "foreground": "#ffec99"
+    },
+    {
+      "name": "Operators",
+      "scope": "keyword.operator",
+      "foreground": "#e64980"
+    },
+    {
+      "name": "Variable",
+      "scope": "variable",
+      "foreground": "#66d9e8"
+    },
+  ]
+}

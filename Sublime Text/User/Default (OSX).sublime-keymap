@@ -1,0 +1,4 @@
+[
+  { "keys": ["super+\\"], "command": "toggle_side_bar" },
+  { "keys": ["super+shift+u"], "command": "wrap_lines" },
+]

@@ -15,11 +15,12 @@ cd .dotfiles
 # Setup nvm
 open "https://github.com/nvm-sh/nvm#readme"
 nvm install --lts # if you're on an M1, this will probably compile node from source
+npm install --global yarn
 
 # follow instructions here to install homebrew:
 open "https://brew.sh"
 # set up homebrewed dependencies
-brew install python coreutils direnv autojump
+brew install python coreutils direnv autojump gh
 # TODO - investigate swapping to fasd over autojump: https://dimmaski.com/looking-for-max-terminal-prod/
 
 # install powerline
@@ -29,6 +30,10 @@ pip3 install powerline-status powerline_gitstatus
 ./scripts/symlink-configs.sh
 # restart iterm. You might get errors about missing powerline but things *should* boot
 ```
+
+## Sublime Text
+
+Adapt the instructions found at https://packagecontrol.io/docs/syncing#dropbox-osx, using the dotfiles Sublime Text folder instead of Dropbox.
 
 ## Pyenv notes
 

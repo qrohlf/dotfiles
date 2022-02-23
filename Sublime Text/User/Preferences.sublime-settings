@@ -1,0 +1,37 @@
+{
+	"color_scheme": "ayu-mirage.sublime-color-scheme",
+	"enable_tab_scrolling": false,
+	"ensure_newline_at_eof_on_save": true,
+	"caret_style": "blink",
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		"node_modules",
+		".sass-cache",
+		"sass-cache"
+	],
+	"font_face": "Menlo",
+	"font_size": 13,
+	"hot_exit": false,
+	"ignored_packages":
+	[
+		"MDX Syntax Highlighting",
+		"Theme - Afterglow",
+		"Vintage"
+	],
+	"no_liga": true,
+	"remember_open_files": false,
+	"rulers":
+	[
+		80
+	],
+	"scroll_past_end": true,
+	"shift_tab_unindent": true,
+	"tab_size": 2,
+	"theme": "ayu-mirage.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+}

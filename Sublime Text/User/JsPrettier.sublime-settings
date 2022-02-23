@@ -1,0 +1,6 @@
+// Settings in here override those in "/JsPrettier/JsPrettier.sublime-settings",
+
+{
+  "auto_format_on_save": true,
+  "auto_format_on_save_excludes": ["*.json"],
+}
