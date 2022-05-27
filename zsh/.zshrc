@@ -12,9 +12,12 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|
 zstyle :compinstall filename '/Users/qrohlf/.zshrc'
 zstyle ':completion:*' menu select=4 # use a cli menu for autocomplete >8
 
+fpath=( "$HOME/.zfunctions" $fpath )
 autoload -Uz compinit
-compinit # this is erroring?
-# End of lines added by compinstall
+compinit
+
+# boot powerlevel10k
+source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 # prefix-scoped up arrow search
 autoload -U up-line-or-beginning-search
@@ -30,8 +33,11 @@ export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 # add ~/.dotfiles/bin to PATH
 export PATH="$HOME/.dotfiles/bin:$PATH"
 
-# configure aliases
+# configure custom aliases
 . ~/.dotfiles/zsh/aliases.sh
+
+# configure custom functions
+. ~/.dotfiles/zsh/functions.sh
 
 # set up homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -43,11 +49,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-# boot up direnv
-eval "$(direnv hook zsh)"
-
 # boot up powerline
-. /opt/homebrew/lib/python3.9/site-packages/powerline/bindings/zsh/powerline.zsh
+# UPDATE 2022-02-28: actually, don't it's garbage
+# . /Users/qrohlf/Library/Python/3.8/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # boot up autojump
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
@@ -58,3 +62,6 @@ export HUSKY=0
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
