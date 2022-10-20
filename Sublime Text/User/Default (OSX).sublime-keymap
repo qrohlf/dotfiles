@@ -1,4 +1,6 @@
 [
   { "keys": ["super+\\"], "command": "toggle_side_bar" },
   { "keys": ["super+shift+u"], "command": "wrap_lines" },
+  { "keys": ["super+b"], "command": "" },
+  { "keys": ["super+f"], "command": "show_panel", "args": {"panel": "replace", "reverse": false} },
 ]

@@ -3,6 +3,9 @@
   "linters": {
     "eslint": {
         "selector": "source.ts, source.tsx, source.js, source.jsx - meta.attribute-with-value"
+    },
+    "stylelint": {
+      "selector": "source.scss"
     }
   }
 }

@@ -34,7 +34,7 @@ export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 export PATH="$HOME/.dotfiles/bin:$PATH"
 
 # configure custom aliases
-. ~/.dotfiles/zsh/aliases.sh
+source ~/.dotfiles/zsh/aliases.sh
 
 # configure custom functions
 . ~/.dotfiles/zsh/functions.sh

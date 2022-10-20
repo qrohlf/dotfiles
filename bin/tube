@@ -1,0 +1,10 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+yt-dlp --no-part --write-subs --sub-langs en --sub-format srt $@
+
+echo "Your file has been downloaded ✨\n\n"
+
+echo "Checking for yt-dlp updates"
+brew upgrade yt-dlp/taps/yt-dlp

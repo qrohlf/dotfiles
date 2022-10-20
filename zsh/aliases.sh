@@ -27,3 +27,35 @@ new_project() {
   git add .gitignore
   git commit -m "initial commit"
 }
+
+localip () {
+  ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'
+}
+
+alias wifip="ipconfig getifaddr en0"
+alias butler-status='gh pr status --json statusCheckRollup -q ".currentBranch.statusCheckRollup[0].state"'
+alias bs="butler-status"
+alias embeds="cd ~/Code/strava/web-embeds && yarn dev"
+
+update-canary () {
+  aws-login
+  /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage app /Users/qrohlf/Code/strava/configuration/mesos/services/active/conf/canary/canary.conf deploy --no-diff name=feed-suggestion branch=qr/feed-suggestion-opt-out
+  osascript -e 'display notification "✅ Canary deploy complete"'
+}
+
+ssh-canary () {
+  /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id active/canary/feed-suggestion shell
+}
+
+logs-canary () {
+  /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id active/canary/feed-suggestion logs -- --follow --timestamps
+}
+
+verbose-ssh-canary () {
+  /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage --verbose tasks --app-id active/canary/feed-suggestion shell
+}
+
+sync-canary () {
+  osascript -e "display notification \"listening\" with title \"🔄 Canary Write Sync\""
+  fswatch -e 'app/javascript' -e '.git' -r /Users/qrohlf/Code/strava/active | xargs -n 1 -I {} zsh -c 'write-to-canary {}'
+}

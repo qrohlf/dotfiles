@@ -1,0 +1,27 @@
+#!/usr/bin/osascript
+
+tell application "iTerm2"
+  set topleft to current session of current window
+  tell current session of current window
+    set topright to split vertically with default profile
+    select topleft
+    set bottomleft to split horizontally with default profile
+    select topright
+    set bottomright to split horizontally with default profile
+
+    tell topleft
+      write text "cd ~/Code/strava/active"
+      write text "cls"
+      write text "bin/rails s"
+    end tell
+    tell topright
+      write text "cd ~/Code/strava/active"
+    end tell
+    tell bottomleft
+      write text "cd ~/Code/strava/active"
+    end tell
+    tell bottomright
+      write text "cd ~/Code/strava/active"
+    end tell
+  end tell
+end tell

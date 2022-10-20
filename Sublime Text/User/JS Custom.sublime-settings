@@ -1,0 +1,24 @@
+{
+  "configurations": {
+        "JSX with GraphQL": {
+            "jsx": true,
+            "custom_templates": {
+                "tags": {
+                    // If you use GraphQL tags:
+                    // const fragment = gql`
+                    //     fragment User on User {
+                    //     …
+                    // `;
+                    "gql": "scope:source.graphql",
+                },
+                "comments": {
+                    // const fragment = /* GraphQL */`
+                    //     fragment User on User {
+                    //     ...
+                    // `;
+                    "GraphQL": "scope:source.graphql",
+                }
+            }
+        }
+    }
+}

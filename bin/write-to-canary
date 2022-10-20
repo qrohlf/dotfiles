@@ -1,0 +1,19 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+if [ ! -f $1 ]; then
+  echo "$1 was deleted or is a directory"
+  exit 0
+fi
+
+FILE=$(grealpath --relative-to=/Users/qrohlf/Code/strava/active/ $1)
+echo "Syncing $FILE"
+
+osascript -e "display notification \"$FILE\" with title \"🔄 Starting Sync\""
+# cat $1 | /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id active/canary/feed-suggestion exec --notty tee "$FILE"
+# echo "restarting rails"
+# /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id active/canary/feed-suggestion exec --notty touch tmp/restart.txt
+cat $1 | /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id active/canary/feed-suggestion exec --notty -- sh -c "cat > \"$FILE\" && touch tmp/restart.txt"
+osascript -e "display notification \"$FILE\" with title \"✅ Sync Complete\""
+echo "$FILE sync complete"

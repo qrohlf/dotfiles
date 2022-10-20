@@ -45,7 +45,12 @@
 	date = relative
 [rebase]
 	instructionFormat = %<(12,trunc)%an %>(15,ltrunc)%ar %<(70,trunc)%s
+	updateRefs = true
 [grep]
 	lineNumber = true
 [pull]
 	ff = only
+[init]
+	defaultBranch = main
+[diff]
+	external = difft
