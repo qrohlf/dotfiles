@@ -37,22 +37,32 @@ alias butler-status='gh pr status --json statusCheckRollup -q ".currentBranch.st
 alias bs="butler-status"
 alias embeds="cd ~/Code/strava/web-embeds && yarn dev"
 
+export CANARY_NAME="qrohlf"
+export CANARY_TRACKING_BRANCH="qr/feed-suggestion-analytics"
+
 update-canary () {
   aws-login
-  /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage app /Users/qrohlf/Code/strava/configuration/mesos/services/active/conf/canary/canary.conf deploy --no-diff name=feed-suggestion branch=qr/feed-suggestion-opt-out
+  /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage app /Users/qrohlf/Code/strava/configuration/mesos/services/active/conf/canary/canary.conf deploy --no-diff name="$CANARY_NAME" branch="$CANARY_TRACKING_BRANCH"
   osascript -e 'display notification "✅ Canary deploy complete"'
 }
 
 ssh-canary () {
-  /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id active/canary/feed-suggestion shell
+  /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id "active/canary/$CANARY_NAME" shell
 }
 
 logs-canary () {
-  /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id active/canary/feed-suggestion logs -- --follow --timestamps
+  /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id "active/canary/$CANARY_NAME" logs -- --follow --timestamps
 }
 
 verbose-ssh-canary () {
-  /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage --verbose tasks --app-id active/canary/feed-suggestion shell
+  /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage --verbose tasks --app-id "active/canary/$CANARY_NAME" shell
+}
+
+block-on-butler-build () {
+  while [ $(gh pr status --json statusCheckRollup -q ".currentBranch.statusCheckRollup[0].state") = "PENDING" ]; do
+    echo "PENDING"
+    sleep 30
+  done
 }
 
 sync-canary () {

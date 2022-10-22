@@ -7,7 +7,7 @@
 # this will copy all audio streams and all subtitle streams
 # might need to pass -c:s mov_text instead of -c:s copy in some cases
 # debug/reference: https://superuser.com/questions/1273764/using-ffmpeg-on-how-do-i-copy-the-video-and-multiple-subtitle-streams-in-an-mkv
-ffmpeg -i "$1" -map 0 -c:v copy -c:a copy -c:s mov_text "$2.mp4"
+ffmpeg -i "$1" -map 0 -c:v copy -c:a copy -c:s mov_text "$1.mp4"
 
 
 # special cases:

@@ -11,6 +11,6 @@ FILE=$(grealpath --relative-to=/Users/qrohlf/Code/strava/active/ $1)
 echo "Syncing $FILE"
 
 osascript -e "display notification \"$FILE\" with title \"🔄 Starting Sync\""
-cat $1 | /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id active/canary/feed-suggestion exec --no-tty -- sh -c "cat > \"$FILE\" && touch tmp/restart.txt"
+cat $1 | /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id "active/canary/$CANARY_NAME" exec --no-tty -- sh -c "cat > \"$FILE\" && touch tmp/restart.txt"
 osascript -e "display notification \"$FILE\" with title \"✅ Sync Complete\""
 echo "$FILE sync complete"
