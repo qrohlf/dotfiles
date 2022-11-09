@@ -1,0 +1,8 @@
+#!/bin/zsh
+set -euo pipefail
+IFS=$'\n\t'
+
+
+aws-login
+/Users/qrohlf/Code/strava/configuration/mesos/tools/paasage app /Users/qrohlf/Code/strava/configuration/mesos/services/active/conf/canary/canary.conf deploy --no-diff name="$CANARY_NAME" branch="$CANARY_TRACKING_BRANCH"
+osascript -e "display notification \"Canary: $CANARY_NAME\" with title \"✅ Deploy of $CANARY_TRACKING_BRANCH complete\""

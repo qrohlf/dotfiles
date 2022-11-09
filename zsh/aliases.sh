@@ -38,13 +38,7 @@ alias bs="butler-status"
 alias embeds="cd ~/Code/strava/web-embeds && yarn dev"
 
 export CANARY_NAME="qrohlf"
-export CANARY_TRACKING_BRANCH="qr/feed-suggestion-analytics"
-
-update-canary () {
-  aws-login
-  /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage app /Users/qrohlf/Code/strava/configuration/mesos/services/active/conf/canary/canary.conf deploy --no-diff name="$CANARY_NAME" branch="$CANARY_TRACKING_BRANCH"
-  osascript -e 'display notification "✅ Canary deploy complete"'
-}
+export CANARY_TRACKING_BRANCH="main"
 
 ssh-canary () {
   /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id "active/canary/$CANARY_NAME" shell
