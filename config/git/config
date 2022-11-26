@@ -27,6 +27,7 @@
 	pum = pull upstream master
 	ru = reset-upstream
 	ro = reset-origin
+	rom = rebase-origin-main
 	rekt = push -f --no-verify
 	rum = !git fetch upstream && git rebase upstream/master
 [include]
@@ -52,5 +53,3 @@
 	ff = only
 [init]
 	defaultBranch = main
-[diff]
-	external = difft

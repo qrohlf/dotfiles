@@ -12,6 +12,10 @@ so() {
   sj $1
   cd - &> /dev/null
 }
+alias v="code"
+vo() {
+  code $(autojump $1)
+}
 alias rezsh="reset && source ~/.zshrc"
 alias cls="clear && printf '\e[3J' && printf '\e]50;ClearScrollback\a'"
 alias chat="open ~/.dotfiles/resources/chat.html"
@@ -38,7 +42,7 @@ alias bs="butler-status"
 alias embeds="cd ~/Code/strava/web-embeds && yarn dev"
 
 export CANARY_NAME="qrohlf"
-export CANARY_TRACKING_BRANCH="main"
+export CANARY_TRACKING_BRANCH="qr/fix-segment-explore"
 
 ssh-canary () {
   /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id "active/canary/$CANARY_NAME" shell

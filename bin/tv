@@ -1,0 +1,8 @@
+#!/bin/bash
+
+src=$1
+file=$(basename -- "$src")
+name="${file%.*}"
+dest="/Users/qrohlf/Movies/TV/Media.localized/Automatically Add To TV.localized/$name.mp4"
+
+mkv2mp4 "$src" "$dest"

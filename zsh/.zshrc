@@ -33,11 +33,11 @@ export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 # add ~/.dotfiles/bin to PATH
 export PATH="$HOME/.dotfiles/bin:$PATH"
 
+# configure local-only env variables
+source ~/.dotfiles/zsh/.env.local
+
 # configure custom aliases
 source ~/.dotfiles/zsh/aliases.sh
-
-# configure custom functions
-. ~/.dotfiles/zsh/functions.sh
 
 # set up homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"

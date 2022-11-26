@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# NOTE: the "Use Docker Compose V2" checkbox in the Docker Preferences > General must be UNCHECKED for this to work
 set -euo pipefail
 IFS=$'\n\t'
 
