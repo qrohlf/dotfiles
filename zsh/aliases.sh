@@ -65,5 +65,11 @@ block-on-butler-build () {
 
 sync-canary () {
   osascript -e "display notification \"listening\" with title \"🔄 Canary Write Sync\""
-  fswatch -e 'app/javascript' -e '.git' -r /Users/qrohlf/Code/strava/active | xargs -n 1 -I {} zsh -c 'write-to-canary {}'
+  fswatch \
+    -e 'app/javascript' \
+    -e '.git' \
+    -e 'tmp' \
+    -e '.log' \
+    -e '.idea' \
+    -r /Users/qrohlf/Code/strava/active | xargs -n 1 -I {} zsh -c 'write-to-canary {}'
 }
