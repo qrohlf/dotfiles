@@ -1,5 +1,6 @@
 #!/bin/bash
-
+set -euo pipefail
+IFS=$'\n\t'
 
 # remux mkv into an mp4 container for Quicktime playback, including HDR10 support
 # and Spatial Audio.
@@ -7,9 +8,9 @@
 # this will copy all audio streams and all subtitle streams
 # might need to pass -c:s mov_text instead of -c:s copy in some cases
 # debug/reference: https://superuser.com/questions/1273764/using-ffmpeg-on-how-do-i-copy-the-video-and-multiple-subtitle-streams-in-an-mkv
-src=$1
+src="$1"
 dest=${2:-"$src.mp4"}
-encoding=$(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=nokey=1:noprint_wrappers=1 $1)
+encoding=$(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=nokey=1:noprint_wrappers=1 "$1")
 extra_args=""
 
 if [ "$encoding" == "hevc" ]; then
@@ -17,10 +18,14 @@ if [ "$encoding" == "hevc" ]; then
   extra_args="-tag:v hvc1"
 fi
 
+
 ffmpeg -i "$src" -map 0 -c:v copy -c:a copy -c:s mov_text $extra_args "$dest"
 
 
 # special cases:
 
-# convert an h265 file:
-# ffmpeg -i "$1" -map 0 -c:v copy -c:a copy -c:s mov_text -tag:v hvc1 "$2.mp4"
+# convert a file with an audio track that Quicktime isn't happy with:
+# ffmpeg -i "$src" -map 0 -c:v copy -c:a libfdk_aac -b:a 448k -c:s mov_text $extra_args "$dest"
+
+# convert a file with a subtitle track that ffmpeg isn't happy with
+# ffmpeg -i "$src" -map 0 -c:v copy -c:a copy -b:a 448k -sn $extra_args "$dest"

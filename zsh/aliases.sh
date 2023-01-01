@@ -41,8 +41,8 @@ alias butler-status='gh pr status --json statusCheckRollup -q ".currentBranch.st
 alias bs="butler-status"
 alias embeds="cd ~/Code/strava/web-embeds && yarn dev"
 
-export CANARY_NAME="qrohlf"
-export CANARY_TRACKING_BRANCH="qr/fix-segment-explore"
+export CANARY_NAME="better-canary-bookmarklet"
+export CANARY_TRACKING_BRANCH="qr/better-canary-bookmarklet"
 
 ssh-canary () {
   /Users/qrohlf/Code/strava/configuration/mesos/tools/paasage tasks --app-id "active/canary/$CANARY_NAME" shell
@@ -57,9 +57,12 @@ verbose-ssh-canary () {
 }
 
 block-on-butler-build () {
-  while [ $(gh pr status --json statusCheckRollup -q ".currentBranch.statusCheckRollup[0].state") = "PENDING" ]; do
-    echo "PENDING"
+  butler_status=$(gh pr status --json statusCheckRollup -q ".currentBranch.statusCheckRollup[0].state")
+  echo $butler_status
+  while [[ $butler_status != "FAILURE" && $butler_status != "SUCCESS" ]]; do
     sleep 30
+    butler_status=$(gh pr status --json statusCheckRollup -q ".currentBranch.statusCheckRollup[0].state")
+    echo $butler_status
   done
 }
 
