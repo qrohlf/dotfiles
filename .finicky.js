@@ -7,10 +7,32 @@ const STRAVA_BROWSER = {
   profile: "Profile 3",
 }
 
+const DEBUG_MODE = true
+
 module.exports = {
   // use Safari as a personal browser
   defaultBrowser: "Safari",
+  options: {
+    logRequests: DEBUG_MODE,
+  },
   handlers: [
+    // {
+    //   // debug logger
+    //   match: ({ opener }) => {
+    //     finicky.log('OPENER', opener)
+    //     return false
+    //   },
+    //   browser: STRAVA_BROWSER
+    // },
+    // open zoom links straight in zoom
+    {
+      match: [
+        finicky.matchDomains(/.*\.zoom.us$/)
+      ],
+      browser: {
+        name: "zoom.us"
+      }
+    },
     {
       // Open any link clicked in Slack in work browser
       match: ({ opener }) =>

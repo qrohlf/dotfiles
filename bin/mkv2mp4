@@ -19,13 +19,13 @@ if [ "$encoding" == "hevc" ]; then
 fi
 
 
-ffmpeg -i "$src" -map 0 -c:v copy -c:a copy -c:s mov_text $extra_args "$dest"
+# ffmpeg -i "$src" -map 0 -c:v copy -c:a copy -c:s mov_text $extra_args "$dest"
 
 
 # special cases:
 
 # convert a file with an audio track that Quicktime isn't happy with:
-# ffmpeg -i "$src" -map 0 -c:v copy -c:a libfdk_aac -b:a 448k -c:s mov_text $extra_args "$dest"
+ffmpeg -i "$src" -map 0 -c:v copy -c:a libfdk_aac -b:a 448k -c:s mov_text $extra_args "$dest"
 
 # convert a file with a subtitle track that ffmpeg isn't happy with
 # ffmpeg -i "$src" -map 0 -c:v copy -c:a copy -b:a 448k -sn $extra_args "$dest"

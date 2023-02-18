@@ -19,7 +19,7 @@
 	ac = commit -av
 	s = status
 	ch = checkout
-	oops = commit --amend --no-edit
+	oops = commit --amend --no-edit --reset-author
 	unstage = reset HEAD --
 	short = rev-parse --short HEAD
 	g = grep
@@ -30,6 +30,7 @@
 	rom = rebase-origin-main
 	rekt = push -f --no-verify
 	rum = !git fetch upstream && git rebase upstream/master
+	nope = !git reset --hard head && git clean -df
 [include]
 	path = .gitconfig_overrides
 [filter "lfs"]

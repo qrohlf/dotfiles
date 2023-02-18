@@ -2,7 +2,9 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+canary_branch=${1:-"$CANARY_TRACKING_BRANCH"}
+canary_name=${2:-"$(echo $canary_branch | sed -r 's/[^a-zA-Z0-9]+/-/g')"}
 
 aws-login
-/Users/qrohlf/Code/strava/configuration/mesos/tools/paasage app /Users/qrohlf/Code/strava/configuration/mesos/services/active/conf/canary/canary.conf deploy --no-diff name="$CANARY_NAME" branch="$CANARY_TRACKING_BRANCH"
-osascript -e "display notification \"Canary: $CANARY_NAME\" with title \"✅ Deploy of $CANARY_TRACKING_BRANCH complete\""
+/Users/qrohlf/Code/strava/configuration/mesos/tools/paasage app /Users/qrohlf/Code/strava/configuration/mesos/services/active/conf/canary/canary.conf deploy --no-diff name="$canary_name" branch="$canary_branch"
+osascript -e "display notification \"Canary: $canary_name\" with title \"✅ Deploy of $canary_branch complete\""

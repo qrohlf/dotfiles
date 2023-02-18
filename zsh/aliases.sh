@@ -20,9 +20,11 @@ alias rezsh="reset && source ~/.zshrc"
 alias cls="clear && printf '\e[3J' && printf '\e]50;ClearScrollback\a'"
 alias chat="open ~/.dotfiles/resources/chat.html"
 alias kelvin="open ~/.dotfiles/resources/kelvin.html"
+alias bones="yarn run -T bones"
 alias c="bones component"
 source ~/.dotfiles/misc/jump_to_git_root.sh
 alias gr=jump_to_git_root
+alias freyr='docker run -it --rm -v $PWD:/data freyrcli/freyrjs'
 new_project() {
   mkdir "$1"
   cd "$1"
