@@ -30,8 +30,13 @@ module.exports = {
         finicky.matchDomains(/.*\.zoom.us$/)
       ],
       browser: {
-        name: "zoom.us"
+        name: "us.zoom.xos"
       }
+    },
+    // open Figma links straight in Figma
+    {
+      match: "https://www.figma.com/file/*",
+      browser: "Figma",
     },
     {
       // Open any link clicked in Slack in work browser
