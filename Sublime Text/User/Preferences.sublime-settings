@@ -18,7 +18,6 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"JsPrettier",
 		"MDX Syntax Highlighting",
 		"Theme - Afterglow",
 		"Vintage",
