@@ -15,6 +15,12 @@ const {homedir} = require('os')
 const {execSync} = require('child_process')
 const {readFileSync} = require('fs')
 
+const THREE_DAYS_AGO = (() => {
+  const d = new Date()
+  d.setDate(d.getDate() + 3)
+  return d.toISOString()
+})()
+
 const get = (path, options) => new Promise((resolve, reject) => {
   const opts = {
     protocol: 'https:',
@@ -58,6 +64,7 @@ const main = async () => {
 
   const query = `head:"${branch}" repo:"${repo}"`
 
+  // TODO - order by date DESC
   const search = `/search/issues?q=${encodeURIComponent(query)}`
   const headers = {
     'Authorization': `token ${token}`,
@@ -66,20 +73,31 @@ const main = async () => {
 
   try {
     const {items} = await get(search, {headers})
-    if (items.length === 0) {
-      console.log(`no PRs found for branch '${branch}'`)
-      const createPullURL = `https://github.com/${repo}/pull/new/${branch}`
-      console.log('🌎 create new PR: ' + createPullURL + '\n')
-      open(createPullURL)
-      process.exit(0)
-    }
+
     if (items.length > 1) {
       const webSearch = `https://github.com/issues?utf8=✓&q=${encodeURIComponent(query)}`
       console.log(`multiple PRs found, see ${webSearch} for list`)
     }
-    const url = items[0].html_url
-    console.log('🌎 opening ' + url + '\n')
-    open(url)
+
+    if (items.length === 1) {
+      const item = items[0]
+      const url = items[0].html_url
+      const isFresh = (!item.closed_at) || (item.closed_at > THREE_DAYS_AGO)
+      if (isFresh) {
+        console.log('🌎 opening ' + url + '\n')
+        open(url)
+        process.exit(0)
+      } else {
+        console.log(`Found closed PR at ${url}; skipping.`)
+      }
+    }
+
+    const createPullURL = `https://github.com/${repo}/pull/new/${branch}`
+    console.log('🌎 create new PR: ' + createPullURL + '\n')
+    open(createPullURL)
+
+    process.exit(0)
+
   } catch (e) {
     console.log(e)
     process.exit(1)
