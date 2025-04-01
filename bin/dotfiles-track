@@ -1,0 +1,40 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# move a file into the dotfiles repo, replacing it with a symlink, and record the 
+# path linkage in the .symlinks file
+
+# first we figure out the file's path relative to the user's home directory
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <file_to_track>"
+    exit 1
+fi
+
+# Get the absolute path of the file to track
+FILE_TO_TRACK=$(realpath "$1")
+
+# Get the user's home directory
+HOME_DIR=$(realpath ~)
+
+# Get the dotfiles directory (parent of this script)
+DOTFILES_DIR=$(realpath ~/.dotfiles)
+
+# Convert the file path to be relative to home directory
+RELATIVE_PATH=${FILE_TO_TRACK#$HOME_DIR/}
+
+# Create the target directory in dotfiles if it doesn't exist
+TARGET_DIR="$DOTFILES_DIR/$(dirname "$RELATIVE_PATH")"
+mkdir -p "$TARGET_DIR"
+
+# Move the file to the dotfiles directory
+mv "$FILE_TO_TRACK" "$DOTFILES_DIR/$RELATIVE_PATH"
+
+# Create the symlink
+ln -s "$DOTFILES_DIR/$RELATIVE_PATH" "$FILE_TO_TRACK"
+
+# Record the linkage in .symlinks file
+echo "$RELATIVE_PATH" >> "$DOTFILES_DIR/.symlinks"
+
+echo "Successfully tracked $RELATIVE_PATH"

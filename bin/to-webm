@@ -1,7 +1,0 @@
-#!/bin/bash
-set -euo pipefail
-IFS=$'\n\t'
-# quick and solid webm encoding
-# taken from ffmpeg docs here: https://trac.ffmpeg.org/wiki/Encode/VP9
-ffmpeg -i "$1" -c:v libvpx-vp9 -b:v 0 -crf 30 -pass 1 -an -f null /dev/null
-ffmpeg -i "$1" -c:v libvpx-vp9 -b:v 0 -crf 30 -pass 2 -an "$1.webm"

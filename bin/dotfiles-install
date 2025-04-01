@@ -1,0 +1,12 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+DOTFILES_DIR=$(realpath ~/.dotfiles)
+# install dotfiles by symlinking everything in the .symlinks file into the home directory
+
+# read the .symlinks file
+while IFS= read -r line; do
+    echo "Symlinking $line"
+    ln -s "$DOTFILES_DIR/$line" "$HOME/$line"
+done < "$DOTFILES_DIR/.symlinks"

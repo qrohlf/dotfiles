@@ -1,0 +1,28 @@
+[user]
+	name = Quinn Rohlf
+	email = qr@qrohlf.com
+[color]
+	ui = true
+[push]
+	default = current
+[alias]
+	head = rev-parse --short head
+	c = commit -v
+	ac = commit -av
+	s = status
+	ch = checkout
+	g = grep
+	ro = reset-origin
+	rom = rebase-origin-main
+[grep]
+	lineNumber = true
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

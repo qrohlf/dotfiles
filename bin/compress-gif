@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# designed for use with .gif files that are output by FCPX
-
-filename=$(basename -- "$1")
-extension="${filename##*.}"
-filename="${filename%.*}"
-gifsicle -O3 --colors 256 --lossy=30 -o "$filename.optimized.gif" "$1"
